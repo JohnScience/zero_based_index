@@ -43,5 +43,11 @@ because, quoting `detly`,
 Instead, one should run
 
 ```text
-cargo doc --no_deps
+cargo test --all-features
+```
+
+or even better
+
+```
+cargo test --features unchecked_math
 ```
