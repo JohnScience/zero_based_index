@@ -18,7 +18,7 @@ other crates and fails building documentation.
 
 Instead, one should run
 
-```
+```text
 cargo doc --no-deps
 ```
 
@@ -27,3 +27,21 @@ as it builds the documentation only for our crate.
 # Read more
 * https://github.com/victe/rust-latex-doc-minimal-example/issues/1
 * https://crates.io/crates/include_display_mode_tex
+
+# Running documentation tests
+
+The following command will fail
+
+```text
+cargo test
+```
+
+because, quoting `detly`,
+
+> When you run cargo test, cargo builds your crate without any features, then it builds its test binary. The test binary includes code guarded by those feature flags, but your crate does not.
+
+Instead, one should run
+
+```text
+cargo doc --no_deps
+```

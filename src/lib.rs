@@ -118,3 +118,14 @@ impl ZeroBasedIndex<usize> {
         self.0.unchecked_add(1)
     }
 }
+
+/// Convenience trait for working with zero-based indices, notably of type `usize`
+pub trait AsZbi: Sized {
+    fn as_zbi(self) -> ZeroBasedIndex<Self>;
+}
+
+impl AsZbi for usize {
+    fn as_zbi(self) -> ZeroBasedIndex<Self> {
+        ZeroBasedIndex(self)
+    }
+}
