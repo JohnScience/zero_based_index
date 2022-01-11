@@ -16,11 +16,11 @@
 //! assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
 //! ```
 //! 
-//! ## Base case with `zero_based_index::AsZbi`
+//! ## Base case with `zero_based_index::AsZeroBasedIndex`
 //! ```
-//! use zero_based_index::{ZeroBasedIndex, AsZbi};
+//! use zero_based_index::{ZeroBasedIndex, AsZeroBasedIndex};
 //! 
-//! let zbi = 2.as_zbi();
+//! let zbi = 2.as_zero_based_index();
 //! assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
 //! ```
 //!
@@ -128,12 +128,12 @@ impl ZeroBasedIndex<usize> {
 }
 
 /// Convenience trait for working with zero-based indices, notably of type `usize`
-pub trait AsZbi: Sized {
-    fn as_zbi(self) -> ZeroBasedIndex<Self>;
+pub trait AsZeroBasedIndex: Sized {
+    fn as_zero_based_index(self) -> ZeroBasedIndex<Self>;
 }
 
-impl AsZbi for usize {
-    fn as_zbi(self) -> ZeroBasedIndex<Self> {
+impl AsZeroBasedIndex for usize {
+    fn as_zero_based_index(self) -> ZeroBasedIndex<Self> {
         ZeroBasedIndex(self)
     }
 }
