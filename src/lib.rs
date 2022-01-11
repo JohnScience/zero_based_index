@@ -23,8 +23,8 @@
 //! let zbi = ZeroBasedIndex::<usize>(usize::MAX);
 //! assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), None);
 //! ```
-#![cfg_attr(not(any(doc, test, feature = "std")), no_std)]
-#![cfg_attr(any(doc, test, feature = "unchecked_math"), feature(unchecked_math))]
+#![cfg_attr(not(any(doc, test, doctest, feature = "std")), no_std)]
+#![cfg_attr(any(doc, test, doctest, feature = "unchecked_math"), feature(unchecked_math))]
 
 use include_display_mode_tex::include_display_mode_tex;
 
@@ -112,18 +112,8 @@ impl ZeroBasedIndex<usize> {
     /// ```    
     ///
     /// *This function is available only if `zero_based_index` is built with the `"unchecked_math"` feature.*
-    #[cfg(any(doc, test, feature = "unchecked_math"))]
+    #[cfg(any(doc, test, doctest, feature = "unchecked_math"))]
     pub unsafe fn get_len_of_closed_int_intvl_from_0_ignoring_overflow(&self) -> usize {
         self.0.unchecked_add(1)
-    }
-}
-
-#[cfg(any(doc,test))]
-mod tests {
-    fn unsafe_math_works() {
-        use crate::ZeroBasedIndex;
-        
-        let zbi = ZeroBasedIndex::<usize>(usize::MAX);
-        assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, 2123124usize);
     }
 }
