@@ -97,7 +97,7 @@ impl ZeroBasedIndex<usize> {
     ///
     /// let zbi = ZeroBasedIndex::<usize>(2);
     /// // <Proof of the necessary level of rigor that the overflow will never happen>
-    /// assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, Some(3));
+    /// assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, 3);
     /// ```
     ///
     /// ## Corner case
@@ -108,7 +108,8 @@ impl ZeroBasedIndex<usize> {
     /// use zero_based_index::ZeroBasedIndex;
     ///
     /// let zbi = ZeroBasedIndex::<usize>(usize::MAX);
-    /// assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, 214127usize);
+    /// // Undefined Behavior can even summon nasal demons that will take your sinful soul.
+    /// assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, 666);
     /// ```    
     ///
     /// *This function is available only if `zero_based_index` is built with the `"unchecked_math"` feature.*

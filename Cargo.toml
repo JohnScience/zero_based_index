@@ -7,3 +7,6 @@ edition = "2021"
 
 [dependencies]
 include_display_mode_tex = "0.1.0"
+
+[features]
+unchecked_math = []
