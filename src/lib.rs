@@ -15,6 +15,14 @@
 //! let zbi = ZeroBasedIndex::<usize>(2);
 //! assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
 //! ```
+//! 
+//! ## Base case with `zero_based_index::AsZbi`
+//! ```
+//! use zero_based_index::{ZeroBasedIndex, AsZbi};
+//! 
+//! let zbi = 2.as_zbi();
+//! assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
+//! ```
 //!
 //! ## Corner case
 //! ```
