@@ -1,7 +1,20 @@
 [package]
 name = "zero_based_index"
 version = "0.1.0"
+authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 edition = "2021"
+rust-version = "1.59.0" # https://github.com/foresterre/cargo-msrv/issues/244
+description = "Newtype offering some utility methods for zero-based indices."
+documentation = "https://docs.rs/zero_based_index"
+readme = "README.md"
+repository = "https://github.com/JohnScience/zero_based_index"
+license = "MIT OR Apache-2.0"
+keywords = ["math", "indices", "mathematics"]
+categories = ["mathematics"]
+autobins = false
+autoexamples = false
+autotests = false
+autobenches = false
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
