@@ -31,3 +31,5 @@ use zero_based_index::ZeroBasedIndex;
 let zbi = ZeroBasedIndex::<usize>(usize::MAX);
 assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), None);
 ```
+
+# Unchecked math
