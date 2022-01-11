@@ -24,7 +24,7 @@ let zbi = 2.as_zero_based_index();
 assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
 ```
 
-/## Corner case
+## Corner case
 ```
 use zero_based_index::ZeroBasedIndex;
 
