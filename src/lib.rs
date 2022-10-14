@@ -5,7 +5,7 @@
 
 #[cfg(feature = "const_inherent_unchecked_arith")]
 use const_fn::const_fn;
-#[cfg(doc)]
+#[cfg(all(doc, feature = "doc"))]
 use include_display_mode_tex::include_display_mode_tex;
 
 /// [Newtype](https://doc.rust-lang.org/rust-by-example/generics/new_types.html) offering some utility methods
@@ -23,7 +23,7 @@ impl ZBI<usize> {
     ///
     /// Using mathematical notation,
     ///
-    #[cfg_attr(doc, doc = include_display_mode_tex!("./tex/to_len.tex"))]
+    #[cfg_attr(all(doc, feature = "doc"), doc = include_display_mode_tex!("./tex/to_len.tex"))]
     ///
     /// # Examples
     ///
@@ -60,7 +60,7 @@ impl ZBI<usize> {
     ///
     /// Using mathematical notation,
     ///
-    #[cfg_attr(doc, doc = include_display_mode_tex!("./tex/to_len.tex"))]
+    #[cfg_attr(all(doc, feature = "doc"), doc = include_display_mode_tex!("./tex/to_len.tex"))]
     ///
     /// # Safety
     ///
