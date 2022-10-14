@@ -20,11 +20,11 @@ autobenches = false
 
 [dependencies]
 include_display_mode_tex = { version = "0.1.4", optional = true }
-const_fn = "0.4.9"
+const_fn = { version = "0.4.9", optional = true }
 
 [features]
 unchecked_math = []
-const_inherent_unchecked_arith = []
+const_inherent_unchecked_arith = ["const_fn"]
 nightly = ["unchecked_math", "const_inherent_unchecked_arith"]
 # such feature is needed in order to avoid compilation of nightly `include_display_mode_tex` which is
 # used only for documentation generation
