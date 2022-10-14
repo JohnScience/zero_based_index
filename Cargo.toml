@@ -1,6 +1,6 @@
 [package]
 name = "zero_based_index"
-version = "0.1.1"
+version = "0.2.1"
 authors = ["Dmitrii Demenev <demenev.dmitriy1@gmail.com>"]
 edition = "2021"
 rust-version = "1.59.0" # https://github.com/foresterre/cargo-msrv/issues/244

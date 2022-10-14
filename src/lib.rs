@@ -6,9 +6,9 @@ use include_display_mode_tex::include_display_mode_tex;
 
 /// [Newtype](https://doc.rust-lang.org/rust-by-example/generics/new_types.html) offering some utility methods
 /// for [zero-based indices](https://en.wikipedia.org/wiki/Zero-based_numbering)
-pub struct ZeroBasedIndex<T>(pub T);
+pub struct ZBI<T>(pub T);
 
-impl ZeroBasedIndex<usize> {
+impl ZBI<usize> {
     /// If the [cardinality](https://en.wikipedia.org/wiki/Cardinality) of the
     /// [closed](https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals)
     /// [integer interval](https://en.wikipedia.org/wiki/Interval_(mathematics)#Integer_intervals)
@@ -19,27 +19,27 @@ impl ZeroBasedIndex<usize> {
     ///
     /// Using mathematical notation,
     ///
-    #[doc = include_display_mode_tex!("./tex/try_get_len_of_closed_int_intvl_from_0.tex")]
+    #[doc = include_display_mode_tex!("./tex/to_len.tex")]
     ///
     /// # Examples
     ///
     /// ## Base case
     /// ```
-    /// use zero_based_index::ZeroBasedIndex;
+    /// use zero_based_index::ZBI;
     ///
-    /// let zbi = ZeroBasedIndex::<usize>(2);
-    /// assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
+    /// let zbi = ZBI(2usize);
+    /// assert_eq!(zbi.to_len(), Some(3));
     /// ```
     ///
     /// ## Corner case
     ///
     /// ```
-    /// use zero_based_index::ZeroBasedIndex;
+    /// use zero_based_index::ZBI;
     ///
-    /// let zbi = ZeroBasedIndex::<usize>(usize::MAX);
-    /// assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), None);
+    /// let zbi = ZBI(usize::MAX);
+    /// assert_eq!(zbi.to_len(), None);
     /// ```
-    pub const fn try_get_len_of_closed_int_intvl_from_0(&self) -> Option<usize> {
+    pub const fn to_len(&self) -> Option<usize> {
         // [0..r] = {0} ∪ (0..r]
         // |[0..r]| = |{0}| + |(0..r]|
         // |{0}| = 1
@@ -56,7 +56,7 @@ impl ZeroBasedIndex<usize> {
     ///
     /// Using mathematical notation,
     ///
-    #[doc = include_display_mode_tex!("./tex/try_get_len_of_closed_int_intvl_from_0.tex")]
+    #[doc = include_display_mode_tex!("./tex/to_len.tex")]
     ///
     /// # Safety
     ///
@@ -69,11 +69,11 @@ impl ZeroBasedIndex<usize> {
     ///
     /// ## Base case
     /// ```
-    /// use zero_based_index::ZeroBasedIndex;
+    /// use zero_based_index::ZBI;
     ///
-    /// let zbi = ZeroBasedIndex::<usize>(2);
+    /// let zbi = ZBI(2usize);
     /// // <Proof of the necessary level of rigor that the overflow will never happen>
-    /// assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, 3);
+    /// assert_eq!(unsafe { zbi.to_len_unchecked() }, 3);
     /// ```
     ///
     /// ## Corner case
@@ -81,27 +81,27 @@ impl ZeroBasedIndex<usize> {
     /// The following is [**UB (Undefined Behavior)**](https://en.wikipedia.org/wiki/Undefined_behavior):
     ///
     /// ```no_run
-    /// use zero_based_index::ZeroBasedIndex;
+    /// use zero_based_index::ZBI;
     ///
-    /// let zbi = ZeroBasedIndex::<usize>(usize::MAX);
+    /// let zbi = ZBI(usize::MAX);
     /// // Undefined Behavior can even summon nasal demons that will take your sinful soul.
-    /// assert_eq!(unsafe { zbi.get_len_of_closed_int_intvl_from_0_ignoring_overflow() }, 666);
+    /// assert_eq!(unsafe { zbi.to_len_unchecked() }, 666);
     /// ```    
     ///
     /// *This function is available only if `zero_based_index` is built with the `"unchecked_math"` feature.*
     #[cfg(any(doc, test, doctest, feature = "unchecked_math"))]
-    pub unsafe fn get_len_of_closed_int_intvl_from_0_ignoring_overflow(&self) -> usize {
+    pub unsafe fn to_len_unchecked(&self) -> usize {
         self.0.unchecked_add(1)
     }
 }
 
 /// Convenience trait for working with zero-based indices, notably of type `usize`
-pub trait AsZeroBasedIndex: Sized {
-    fn as_zero_based_index(self) -> ZeroBasedIndex<Self>;
+pub trait AsZBI: Sized {
+    fn as_zbi(self) -> ZBI<Self>;
 }
 
-impl AsZeroBasedIndex for usize {
-    fn as_zero_based_index(self) -> ZeroBasedIndex<Self> {
-        ZeroBasedIndex(self)
+impl AsZBI for usize {
+    fn as_zbi(self) -> ZBI<Self> {
+        ZBI(self)
     }
 }

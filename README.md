@@ -3,33 +3,33 @@ for [zero-based indices](https://en.wikipedia.org/wiki/Zero-based_numbering)
 
 In order to keep the lengths of method names reasonable, several abbreviations have been used, namely
 * [**len**](https://www.abbreviations.com/term/92110) for length;
-* [**intvl**](https://www.abbreviations.com/term/563139) for interval;
 * [**int**](https://www.abbreviations.com/term/542972) for integer.
+* [**zbi**](https://www.abbreviations.com/term/2520505) for zero-based index.
 
 # Examples
 
 ## Base case
 ```
-use zero_based_index::ZeroBasedIndex;
+use zero_based_index::ZBI;
 
-let zbi = ZeroBasedIndex::<usize>(2);
-assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
+let zbi = ZBI(2usize);
+assert_eq!(zbi.to_len(), Some(3));
 ```
 
-## Base case with `zero_based_index::AsZeroBasedIndex`
+## Base case with `zero_based_index::AsZBI`
 ```
-use zero_based_index::{ZeroBasedIndex, AsZeroBasedIndex};
+use zero_based_index::{ZBI, AsZBI};
 
-let zbi = 2.as_zero_based_index();
-assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), Some(3));
+let zbi = 2.as_zbi();
+assert_eq!(zbi.to_len(), Some(3));
 ```
 
 ## Corner case
 ```
-use zero_based_index::ZeroBasedIndex;
+use zero_based_index::ZBI;
 
-let zbi = ZeroBasedIndex::<usize>(usize::MAX);
-assert_eq!(zbi.try_get_len_of_closed_int_intvl_from_0(), None);
+let zbi = ZBI(usize::MAX);
+assert_eq!(zbi.to_len(), None);
 ```
 
 # Unchecked math
