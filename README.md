@@ -1,6 +1,6 @@
 [![crates.io](https://img.shields.io/crates/v/zero_based_index.svg)][`zero_based_index`]
 [![crates.io](https://img.shields.io/crates/d/zero_based_index.svg)][`zero_based_index`]
-[![crates.io](https://img.shields.io/github/workflow/status/JohnScience/zero_based_index/Rust)][`zero_based_index`]
+[![crates.io](https://img.shields.io/github/workflow/status/JohnScience/zero_based_index/Stable)][`zero_based_index`]
 
 [Newtype](https://doc.rust-lang.org/rust-by-example/generics/new_types.html) offering some utility methods
 for [zero-based indices](https://en.wikipedia.org/wiki/Zero-based_numbering)
