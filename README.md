@@ -1,3 +1,7 @@
+[![crates.io](https://img.shields.io/crates/v/zero_based_index.svg)][`zero_based_index`]
+[![crates.io](https://img.shields.io/crates/d/zero_based_index.svg)][`zero_based_index`]
+[![crates.io](https://img.shields.io/github/workflow/status/JohnScience/zero_based_index/Rust)][`zero_based_index`]
+
 [Newtype](https://doc.rust-lang.org/rust-by-example/generics/new_types.html) offering some utility methods
 for [zero-based indices](https://en.wikipedia.org/wiki/Zero-based_numbering)
 
@@ -32,9 +36,12 @@ let zbi = ZBI(usize::MAX);
 assert_eq!(zbi.to_len(), None);
 ```
 
-# Unchecked math
+# Features
 
-With `unchecked_math` feature, one can also get access to unsafe superpowers.
+* Check the list of feature flags [here](https://docs.rs/crate/zero_based_index/latest/features).
+* Learn about features in general [here](https://dev.to/rimutaka/cargo-features-explained-with-examples-194g).
+
+[`zero_based_index`]: https://crates.io/crates/zero_based_index
 
 # License
 

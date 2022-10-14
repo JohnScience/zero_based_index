@@ -1,7 +1,10 @@
 #![doc = include_str!("../README.md")]
 #![cfg_attr(not(any(doc, test, doctest, feature = "std")), no_std)]
 #![cfg_attr(any(doc, test, doctest, feature = "unchecked_math"), feature(unchecked_math))]
+#![cfg_attr(any(doc, test, doctest, feature = "const_inherent_unchecked_arith"), feature(const_inherent_unchecked_arith))]
 
+#[cfg(feature = "const_inherent_unchecked_arith")]
+use const_fn::const_fn;
 use include_display_mode_tex::include_display_mode_tex;
 
 /// [Newtype](https://doc.rust-lang.org/rust-by-example/generics/new_types.html) offering some utility methods
@@ -90,6 +93,7 @@ impl ZBI<usize> {
     ///
     /// *This function is available only if `zero_based_index` is built with the `"unchecked_math"` feature.*
     #[cfg(any(doc, test, doctest, feature = "unchecked_math"))]
+    #[cfg_attr(feature = "const_inherent_unchecked_arith", const_fn)]
     pub unsafe fn to_len_unchecked(&self) -> usize {
         self.0.unchecked_add(1)
     }
